@@ -1,0 +1,16 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net9.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Reference Include="LibDemo">
+      <HintPath>..\..\..\..\Windows\Microsoft.NET\assembly\GAC_MSIL\LibDemo\v4.0_1.0.1.1__128fdc9621ecec46\LibDemo.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>

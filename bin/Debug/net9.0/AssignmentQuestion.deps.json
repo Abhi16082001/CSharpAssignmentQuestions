@@ -1,0 +1,39 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v9.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v9.0": {
+      "AssignmentQuestion/1.0.0": {
+        "dependencies": {
+          "LibDemo": "1.0.1.1"
+        },
+        "runtime": {
+          "AssignmentQuestion.dll": {}
+        }
+      },
+      "LibDemo/1.0.1.1": {
+        "runtime": {
+          "LibDemo.dll": {
+            "assemblyVersion": "1.0.1.1",
+            "fileVersion": "1.0.1.1"
+          }
+        }
+      }
+    }
+  },
+  "libraries": {
+    "AssignmentQuestion/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "LibDemo/1.0.1.1": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}
