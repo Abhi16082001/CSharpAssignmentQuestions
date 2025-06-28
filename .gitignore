@@ -69,6 +69,8 @@ ScaffoldingReadMe.txt
 # StyleCop
 StyleCopReport.xml
 
+# Program.cs from where I used to test the every question's code which i have written so not important
+Program.cs
 # Files built by Visual Studio
 *_i.c
 *_p.c

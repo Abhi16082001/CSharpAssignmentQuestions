@@ -4,7 +4,7 @@ using System.Text;
 
 internal class SuppAssgn
 {
-    public bool IsPrime(int n) //P1
+    public bool IsPrime(int n) //P1 - Check for Prime number
     {
         if (n == 0 || n == 1) return false;
         for (int i = 2; i <= n / 2; i++) /* We will check the factors till half of the number because once it 
@@ -17,7 +17,7 @@ internal class SuppAssgn
     }
 
 
-    public void Swap()  // P2
+    public void Swap()  // P2 - Swap without third variable and without addition & subtraction
     {
         Console.Write("Enter Value for A: ");
         int a = int.Parse(Console.ReadLine());
@@ -33,7 +33,7 @@ internal class SuppAssgn
 
     }
 
-    public int Reverse(int n) // P3
+    public int Reverse(int n) // P3 - Reverse of a given number
     {
         int d = 0, rvs = 0;
         while (n > 0) //Till number becomes zero after dividing
@@ -45,7 +45,7 @@ internal class SuppAssgn
         return rvs;
     }
 
-    public int binary(int n)  // P4 - binary using recursion
+    public int binary(int n)  // P4 - Binary using recursion
     {
         int bin = 0;
         if (n == 0) return 0;  // if the number is 0 then binary will also be 0 and same for 1
@@ -63,7 +63,7 @@ internal class SuppAssgn
 
     }
 
-    public int binarri(int n)  //P4 - using array and iteration
+    public int binarri(int n)  //P4 - Binary Search using array and iteration
     {
         int bin = 0, i = 0;
         int[] arr = new int[16];
@@ -82,12 +82,12 @@ internal class SuppAssgn
     }
 
 
-    public bool palindrome(int n) //P5
+    public bool palindrome(int n) //P5 - Check for palindrome
     {
         return n == Reverse(n);
     }
 
-    public void fibo(int ub) //P6
+    public void fibo(int ub) //P6 - Print Fibonacci series upto upper bound
     {
         int[] a = new int[ub];
         a[0] = 0; a[1] = 1;
@@ -99,7 +99,7 @@ internal class SuppAssgn
             Console.Write(i + " ");
     }
 
-    public int factItr(int n) //P7  -using interation
+    public int factItr(int n) //P7  - Factorial using interation
     {
         int fact = 1;
         for (int i = n; i > 0; i--)
@@ -107,7 +107,7 @@ internal class SuppAssgn
         return fact;
     }
 
-    public int factRec(int n) //P7  - using recursion
+    public int factRec(int n) //P7  - Factorial using recursion
     {
         if (n == 0 || n == 1) return 1;
 
@@ -115,7 +115,7 @@ internal class SuppAssgn
         return fact;
     }
 
-    public bool armstrong(int n) //P8
+    public bool armstrong(int n) //P8 - Check for Armstrong number
     {
         int num = n, rem = 0, nod = 0;
         while (n > 0)
@@ -138,7 +138,7 @@ internal class SuppAssgn
 
     }
 
-    public int sod(int n) //P9
+    public int sod(int n) //P9 - Sum of digits of given number
     {
         int sum = 0;
         int rem = 0;
@@ -151,7 +151,7 @@ internal class SuppAssgn
         return sum;
     }
 
-    public int rec_ssod(int n) //P10  -using recursion
+    public int rec_ssod(int n) //P10  - Sum of digits until single digit using recursion
     {
         if (n < 9) return n;
         int num = sod(n);
@@ -160,7 +160,7 @@ internal class SuppAssgn
 
     }
 
-    public int it_ssod(int n) //P10  -using iteration
+    public int it_ssod(int n) //P10  -Sum of digits until single digit using iteration
     {
         while (n >9)
         {
@@ -170,7 +170,7 @@ internal class SuppAssgn
         return n;
     }
 
-    public String NumToWrd() //P11
+    public String NumToWrd() //P11- To print given number in words
     {
         Console.Write("Enter the number [<=9999999999]  : ");
         ulong n = ulong.Parse(Console.ReadLine());
@@ -245,13 +245,13 @@ internal class SuppAssgn
     }
 
 
-    public bool IsLeapYear(int n) //P12
+    public bool IsLeapYear(int n) //P12 - Check for leap year
     {
         if (n % 100 == 0) return n % 400 == 0;
         else return n % 4 == 0;      
     }
 
-    public int MaxInArr(int[] a) //P13
+    public int MaxInArr(int[] a) //P13 - Give Max Number in Array
     { int max = 0;
         foreach(int j in a)
         {
@@ -260,7 +260,7 @@ internal class SuppAssgn
         return max;
     }
 
-    public String RvrString(String str) //P14
+    public String RvrString(String str) //P14 - Reverse the string
     {
         String rvs = "";
         foreach(char ch in str)
@@ -272,7 +272,7 @@ internal class SuppAssgn
 
     }
 
-    public int LenString(String str) //P16
+    public int LenString(String str) //P16 - Find the length of given string
     {
         int cnt = 0;
         foreach(char ch in str)
@@ -281,7 +281,7 @@ internal class SuppAssgn
         }
         return cnt;
     }
-    public int ChrCount(String str) //P17
+    public int ChrCount(String str) //P17 - Find the number of characters in given string e.g. "Hello    World" -> 10 characters
     {
         int cnt = 0;
         foreach (char ch in str)
@@ -291,7 +291,7 @@ internal class SuppAssgn
         return cnt;
     }
 
-    public int WrdCnt(String str) //P15
+    public int WrdCnt(String str) //P15 - Find the number of Words in a string e.g. :Hello   World" -> 2 words
     {
         int cnt = 0;
         int iwrd=0,fwrd=0;
@@ -311,7 +311,7 @@ internal class SuppAssgn
         return cnt+1;
     }
 
-    public String WrdRvrs(String str) // P18
+    public String WrdRvrs(String str) // P18 - Print words in Reverse order e.g. "Hello    world" -> world Hello
     {
         String wrd = "", rvs=""; // wrd to store the single word and rvs will store the whole reversed word string
         for(int i = 0; i<str.Length; i++)
@@ -328,7 +328,7 @@ internal class SuppAssgn
     }
 
 
-    public StringBuilder tolwr(StringBuilder sb) //P19
+    public StringBuilder tolwr(StringBuilder sb) //P19 - Replicate Tolower()
     {
         for (int i = 0; i < sb.Length; i++)
         {
@@ -338,7 +338,7 @@ internal class SuppAssgn
         return sb;
     }
 
-    public StringBuilder toupr(StringBuilder sb) //P20
+    public StringBuilder toupr(StringBuilder sb) //P20 - Replicate ToUpper()
     {
         for (int i = 0; i < sb.Length; i++)
         {
@@ -348,7 +348,7 @@ internal class SuppAssgn
         return sb;
     }
 
-    public StringBuilder topscl(StringBuilder sb) {  // P21
+    public StringBuilder topscl(StringBuilder sb) {  // P21 - Create ToPascal()
     
         for(int i = 0; i < sb.Length; i++)
         {
@@ -363,7 +363,9 @@ internal class SuppAssgn
         return sb;
     }
 
-    public void unqChar1(StringBuilder sb) {  //P22 - gives unique characters by which a each word is composed of like Hello - E H L O but for special charactors it just indentifies that there are special characters, doesn't show which special characters are there.
+    public void unqChar1(StringBuilder sb) {  //P22 - Give unique characters for each word  like "Hello   World" -> E H L O /n D L O R W
+                                              //[but for special charactors it just indentifies that there are special characters, doesn't show which special characters are there becasuse that wasn't mentioned in the question, I just added myself].
+       
         int c;
         bool[] carr = new bool[27]; // carr will store true for the index who corresponding english alphabet is present in string and at 26th index it will store true if any special character will be present.
       
@@ -407,7 +409,7 @@ internal class SuppAssgn
 
 
 
-    public void unqChar2(String sb) { //P22 - characters not having any duplicates in the whole string with special characters
+    public void unqChar2(String sb) { //P22 - Unique characters in the whole string with special characters but case sensitive
         int cnt1 = 0, cnt2 = 0; // two counts for nested foreach traversal
         bool exist = false; // variable for know whether another same character exists or not
         Console.Write("Unique Characters: ");
@@ -476,7 +478,7 @@ internal class SuppAssgn
     }
 
 
-    public void dupChar2(StringBuilder sb) { //P23 - characters having  duplicates in the whole string with special characters
+    public void dupChar2(StringBuilder sb) { //P23 - Characters having  duplicates in the whole string with special characters
         bool exist = false; // variable for know whether another same character exists or not
         Console.Write("Duplicate Characters: ");
         for (int i = 0; i < sb.Length; i++)
@@ -709,7 +711,8 @@ internal class SuppAssgn
 
 
 
-    public void PyrCalcPttrn(int n)  //P32- my logic using one-D array of size equal to no of rows
+    public void PyrCalcPttrn(int n)  //P32- Pyramid pattern where pyramid border is made from 1's and inside numbers are sum of above two number in between the current one will be
+                                     //my logic using one-D array of size equal to no of rows
     {
         int ln=1,j, nt=1,t,i; int[] arr = new int[n];
         arr[0] = 1;
@@ -823,7 +826,7 @@ internal class SuppAssgn
     }
 
 
-    public void BubbleSort(int[] arr) //P36-Moving the maximum element at the end and in next
+    public void BubbleSort(int[] arr) //P36-Moving the maximum element at the end and in next iteration till the n-1 and so on
     {
         int temp;
         bool swp = false;
