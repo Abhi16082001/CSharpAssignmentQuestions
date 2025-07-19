@@ -2,7 +2,7 @@
 
 using System.Text;
 
-internal class SuppAssgn
+internal class RajuSirAssignment
 {
     public bool IsPrime(int n) //P1 - Check for Prime number
     {
