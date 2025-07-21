@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AssignmentQuestion
 {
-    internal class ViswaSirAssignment
+    internal class ViswaSirCSharpArraysQn
     {
         public void vowelConsntCount(string str) // Q1- To count the number of vowels and consonant in a string -Pg44
         { int v = 0, cn = 0;
