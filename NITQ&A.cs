@@ -11,7 +11,7 @@ using System.Xml.Linq;
 
 namespace AssignmentQuestion
 {
-
+    // For P19
     public class Employee
     {
         int empid,age;
@@ -35,7 +35,8 @@ namespace AssignmentQuestion
         }
 
     }
-
+     
+    // For P20
     public class Person
     {
         String name;
@@ -94,6 +95,143 @@ namespace AssignmentQuestion
             Console.WriteLine($"Employee ID: {empid}") ;
             base.display();
             Console.WriteLine($"Total Salary: {totsal}");
+        }
+
+
+    }
+    // For P21
+    public abstract class EmpTemplate {
+        public int empid,age;
+       public string name;
+       public  double sal;
+        public abstract void setter();
+        public abstract void display();
+    }
+    public class Empabs : EmpTemplate
+    {
+        public override void setter()
+        {
+            Console.WriteLine("Enter Employee ID: ");
+            empid=int.Parse(Console.ReadLine());
+            Console.WriteLine("Enter Employee Name: ");
+            name = Console.ReadLine();
+            Console.WriteLine("Enter Employee Age: ");
+            age = int.Parse(Console.ReadLine());
+            Console.WriteLine("Enter Employee Salary: ");
+             sal= double.Parse(Console.ReadLine());
+        }
+        public override void display()
+        {
+            Console.WriteLine($"Employee ID: {empid}\nName: {name}\nAge: {age}\nSalary: {sal}"); 
+        }
+    }
+
+    // For P22
+    public class overloadQ
+    { 
+        public int plus(int n1, int n2)
+        {
+            return n1 + n2;
+        }
+        public string plus(string s1, string s2)
+        {
+            return s1 + s2;
+        }
+        
+    }
+    // For P23
+    public class overRidePrnt
+    {
+        public virtual void Display()
+        {
+            Console.WriteLine("This is the Parent Display method !!");
+        }
+    }
+    public class overRideChld : overRidePrnt
+    {
+        public override void Display()
+        {
+            Console.WriteLine("This is the Overriden Display Method of child class !!");
+        }
+    }
+
+
+    // For P24
+    interface intrfc1
+    {
+        public abstract int Add(int n1, int n2);
+        
+    }
+    interface intrfc2
+    {
+        public abstract int Sub(int n1, int n2);
+        
+    }
+    public class MultipleInheritance: intrfc1, intrfc2
+    {
+        public int Add(int n1, int n2) { return n1 + n2; }
+        public int Sub(int n1, int n2) { return n1 - n2; }
+    }
+
+    //For P25
+    public class datetimeQsn
+    {
+        static int date;
+        static int month;
+        static int year;
+        public static void getdate()
+        {
+            date = DateTime.Now.Day;
+            month = DateTime.Now.Month;
+            year = DateTime.Now.Year;
+            Console.WriteLine($"Today's Date: {date}/{month}/{year}");
+        }
+        
+    }
+
+    //For P26
+    public class CtorOvrldDemo
+    {
+        public int intgr;
+        public string? strg;
+        public CtorOvrldDemo()
+        {
+            intgr = 0;
+            strg = null;
+        }
+        public CtorOvrldDemo(int intgr, string strg)
+        {
+            this.intgr = intgr;
+            this.strg = strg;
+        }
+        public CtorOvrldDemo(CtorOvrldDemo cod)
+        {
+            this.intgr = cod.intgr;
+            this.strg = cod.strg;
+        }
+
+        public override string ToString()
+        {
+            return $"Integer : {intgr} String: {strg}";
+        }
+    }
+
+    //For P27
+    public class EmpPrmC
+    {
+        int empid, age;
+        string name;
+        double sal;
+        public EmpPrmC(int id, int ag, double salry, string nm)
+        {
+            empid = id;
+            name = nm;
+            age = ag;
+            sal = salry;
+        }
+        public override string ToString()
+        {
+            return $"EmpID : {empid}\nName : {name}\nAge : {age}\nSalary : {sal}";
         }
 
     }
@@ -413,7 +551,65 @@ namespace AssignmentQuestion
             emp.display();
         }
 
+        public void empabsdtls()  //P21.	Write a program to accept employee details using abstract class and abstract methods?
+        {
+            Empabs emp = new Empabs();
+            emp.setter();
+            emp.display();
+        }
 
+        public void OvrldeQsn()// P22.	Write a program to perform method overloading by changing the datatypes?
+        {
+            overloadQ ol = new overloadQ();
+            Console.WriteLine("Result of Plus method with integer values : "+ol.plus(20,35));
+            Console.WriteLine("Result of Plus method with string values : " + ol.plus("Poke", "Mon"));
+        }
+        
+        public void OvrRdQsn() //P23.	Write a program to perform method overriding?
+        {
+            overRidePrnt ovrP= new overRidePrnt();
+            overRidePrnt ovrP2 = new overRideChld();
+            overRideChld ovrC = new overRideChld();
+            Console.WriteLine("Method Call through Parent Instance: ");
+            ovrP.Display();
+            Console.WriteLine("Method Call through Parent Reference: This is Overriding : ");
+            ovrP2.Display();
+            Console.WriteLine("Method Call through Child Instance: ");
+            ovrC.Display();
+        }
+
+        public void multipleinrhtnc() // P24. Write a program to achieve multiple inheritance using interface?
+        {
+            MultipleInheritance mi= new MultipleInheritance();
+            Console.WriteLine("Add: "+mi.Add(23,34));
+            Console.WriteLine("Sub: " + mi.Sub(23, 34));
+
+        }
+         
+        public void staticdatetime() //P25 - Write program to display date time using static method?
+        {
+            datetimeQsn.getdate();
+            
+        }
+
+        public void CtorOvrld()  // P26. Write a program for constructor overloading?
+        {
+            CtorOvrldDemo cod = new CtorOvrldDemo();
+            Console.WriteLine(cod);
+            CtorOvrldDemo cod2 = new CtorOvrldDemo(10, "Hello");
+            Console.WriteLine(cod2);
+            CtorOvrldDemo cod3 = new CtorOvrldDemo(cod2);
+            Console.WriteLine(cod3);
+
+        }
+
+        public void PCtor() //P27. Write a program to implement parameterized constructor?
+        {
+            EmpPrmC emp1 = new EmpPrmC(101,23,50000,"Abhishek");
+            EmpPrmC emp2 = new EmpPrmC(102, 25, 60000, "Rajput");
+            Console.WriteLine(emp1);
+            Console.WriteLine(emp2);
+        }
 
     }
 }
