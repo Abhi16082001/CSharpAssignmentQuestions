@@ -1,8 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
+using System.Collections;
 using System.ComponentModel;
 using System.Diagnostics.Metrics;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
@@ -235,6 +236,168 @@ namespace AssignmentQuestion
         }
 
     }
+
+    // For P33
+    public class DelegateDemo
+    {
+        public void show1()
+        {
+            Console.Write("Abhishek");
+        }
+        public void show2()
+        {
+            Console.Write("Rajput");
+        }
+    }
+
+    public delegate void delgt();
+
+
+    //For P34
+    public class mltthrdDemo
+    {
+        public void fun1()
+        {
+            for (int i = 0; i < 50; i++)
+            {
+                Console.WriteLine("Fun1 : " + i + " executed by Thread "+Thread.CurrentThread.ManagedThreadId);
+            }
+        }
+
+        public void fun2()
+        {
+            for (int i = 0; i < 50; i++)
+            {
+                Console.WriteLine("Fun2 : " + i + " executed by Thread " + Thread.CurrentThread.ManagedThreadId);
+            }
+        }
+    }
+
+    //For P35
+    public class student
+    {
+        int _id, _age;
+        string _name;
+        float _per;
+        public int id
+        {
+            set { _id = value; }
+            get { return _id; }
+        }
+        public int age
+        {
+            set { _age = value; }
+            get { return _age; }
+        }
+        public string name
+        {
+            set { _name = value; }
+            get { return _name; }
+        }
+        public float per
+        {
+            set { _per = value; }
+            get { return _per; }
+        }
+    }
+    //For P36
+    public class Pokemon
+    {
+       public  string name,type1,type2;
+        public int gen;
+    }
+    public class Starter: Pokemon
+    {
+        public virtual void getStrType()
+        {
+            Console.Write("Choose one of the following :\n1.Fire\n2.Grass\n3.Water\n");
+            type1 = Console.ReadLine();
+        }
+    }
+    public sealed class Generation : Starter
+    {
+        public override void getStrType()
+        {
+            base.getStrType();
+            Console.Write("Give Second Type: ");
+            type2 = Console.ReadLine();
+        }
+        public void getgen()
+        {
+            Console.Write("Choose Gen from 1-9: ");
+            gen =int.Parse( Console.ReadLine());
+            Console.Write("Enter Name: ");
+            name= Console.ReadLine();
+        }
+        public override string ToString()
+        {
+            return $"Name: {name}\nType1: {type1}\nType2: {type2}\nGen: {gen}";
+        }
+  
+    }
+
+
+    //For P37
+    public class EmpPrivate
+     {
+        int empid, age;
+        string name;
+        double sal;
+         public void setter()
+        {
+            Console.Write("Enter Employee ID: ");
+            empid = int.Parse(Console.ReadLine());
+            Console.Write("Enter Employee Name: ");
+            name= Console.ReadLine();
+            Console.Write("Enter Employee Age: ");
+            age = int.Parse(Console.ReadLine());
+            Console.Write("Enter Employee Salary: ");
+            sal = double.Parse(Console.ReadLine());
+        }
+
+        public override string ToString()
+        {
+            return $"Employee ID: {empid}\nName: {name}\nAge: {age}\nSalary: {sal}";
+        }
+     }
+
+
+    //For P39
+    public class AccsModDemoStu
+    {
+        private string name;
+        protected int age;
+        
+        public float marks;
+        internal int id;
+        public AccsModDemoStu(string nm)
+        {
+            name = nm;
+        }
+        public void showName()
+        {
+            Console.WriteLine("Student Name : "+name);
+        }
+    }
+
+    public class studtls : AccsModDemoStu
+    {
+       public studtls(int age, int id, float mrks,string nm):base(nm)
+        {
+            this.age=age;
+            this.id=id;
+            marks = mrks;
+        }
+
+        public void showDtls()
+        {
+            Console.WriteLine("Student ID: "+id);
+            showName();
+            Console.WriteLine("Student Age: " + age);
+            Console.WriteLine("Student Marks: " + marks);
+        }
+    }
+    
 
     internal class NITQ_A
     {
@@ -609,6 +772,190 @@ namespace AssignmentQuestion
             EmpPrmC emp2 = new EmpPrmC(102, 25, 60000, "Rajput");
             Console.WriteLine(emp1);
             Console.WriteLine(emp2);
+        }
+
+        public void DivideException() //P28. Write a program to perform division operation using exception handling?
+        {
+            double res = 0;
+            Console.Write("Enter Dividend: ");
+            try
+            {
+            double n1 = double.Parse(Console.ReadLine());
+        Console.Write("Enter Divisor: ");
+            double n2 = double.Parse(Console.ReadLine());
+                if (n2 == 0) throw new DivideByZeroException(); // Because instead of exception it was giving infinity as answer while dividing with zero !
+                res = n1 / n2;
+            }
+            catch(FormatException e)
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("Please enter number only !!");
+            }
+            catch (DivideByZeroException e)
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("Divisor Cant be Zero !!");
+            }
+            catch (Exception e)
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("Error : "+e.Message);
+            }
+            Console.ForegroundColor = ConsoleColor.DarkBlue;
+            Console.WriteLine("Division Result is : " + res);
+        }
+
+        public void TrvsStack() //P29. Write a program to print 10 values of different data types using stack?
+        {
+            Stack st = new Stack();
+            st.Push(16); st.Push("Abhi");
+            st.Push(08); st.Push("Raj");
+            st.Push(2001); st.Push('A');
+            st.Push('R'); st.Push(34.567);
+            st.Push(true); st.Push(56.78);
+            foreach(var i in st)
+            {
+                Console.WriteLine(i);
+            }
+
+        }
+
+        public void TrvsQueue() //P30. Write a program to print 10 values of different data types using Queue?
+        {
+            Queue st = new Queue();
+            st.Enqueue(16); st.Enqueue("Abhi");
+            st.Enqueue(08); st.Enqueue("Raj");
+            st.Enqueue(2001); st.Enqueue('A');
+            st.Enqueue('R'); st.Enqueue(34.567);
+            st.Enqueue(true); st.Enqueue(56.78);
+            foreach (var i in st)
+            {
+                Console.WriteLine(i);
+            }
+
+        }
+
+        public void TrvsHashTable() //P31. Write a program to print 10 values of different data types using hash table?
+        {
+            Hashtable ht = new Hashtable();
+            ht.Add(1,16); ht.Add(2,"Abhi");
+            ht.Add(3,08); ht.Add(4,"Raj");
+            ht.Add(5,2001); ht.Add(6,'A');
+            ht.Add(7,'R'); ht.Add(8,34.567);
+            ht.Add(9,true); ht.Add(10,56.78);
+            foreach (DictionaryEntry i in ht)
+            {
+                Console.WriteLine($"Key : {i.Key} ; Value : {i.Value}");
+            }
+
+        }
+
+
+        public void TrvsSortedList() //P32. Write a program to print 10 values of different data types using Sorted List?
+        {
+            SortedList sl = new SortedList();
+            sl.Add(4, 16); sl.Add(2, "Abhi");
+            sl.Add(3, 08); sl.Add(1, "Raj");
+            sl.Add(10, 2001); sl.Add(6, 'A');
+            sl.Add(7, 'R'); sl.Add(9, 34.567);
+            sl.Add(8, true); sl.Add(5, 56.78);
+            foreach (DictionaryEntry i in sl)
+            {
+                Console.WriteLine($"Key : {i.Key} ; Value : {i.Value}");
+            }
+
+        }
+
+        public void DelegateTest()  //P33. Write a program to implement multi cast delegate for performing different operations?
+        {
+            delgt dg1, dg2, dg3,dg4,dg5;
+            DelegateDemo dlgdm = new DelegateDemo();
+            dg1 = new delgt(dlgdm.show1);
+            dg2 = new delgt(dlgdm.show2);
+            dg3 = dg1 + dg2;
+            dg4 = dg3 - dg1;
+            dg5 = dg3 - dg2;
+            dg1();  Console.WriteLine();
+            dg2(); Console.WriteLine();
+            dg3(); Console.WriteLine(); 
+            dg4(); Console.WriteLine(); 
+            dg5(); Console.WriteLine();
+        }
+
+
+        public void multithrding()  //P34 - Write a program to implement multi-threading?
+        {
+            Console.Write("Main Thread Starting !!");
+            mltthrdDemo mt = new mltthrdDemo();
+            Thread t1 = new Thread(mt.fun1);
+            Thread t2 = new Thread(mt.fun2);
+            t1.Start(); t2.Start();
+            t1.Join(); t2.Join();
+            Console.Write("Main Thread Exited !!");
+        }
+
+
+        public void ShowStu() // P35. Write a program to display student basic details using Read-Write property?
+        {
+            student stu = new student();
+            stu.name = "Abhi";
+            stu.id = 1008;
+            stu.age = 23;
+            stu.per = 92.8f;
+            Console.WriteLine($"Student Id: {stu.id}\nName: {stu.name}\nAge: {stu.age}\nPercentage: {stu.per}");
+        }
+
+        public void sealedDemo() //P36. Write a program which should contain multiple inherited classes and the last defined should not allow inheritance?
+        {
+            Generation gen = new Generation();
+            gen.getStrType();
+            gen.getgen();
+            Console.WriteLine(gen);
+        }
+
+        public void empPrvt() //P37. Write a program to accept employee details using private variables?
+        {
+            EmpPrivate emp=new EmpPrivate();
+            emp.setter();
+            Console.WriteLine(emp);
+        }
+
+        public void StuReport() //P38. Write a program to calculate percentage of marks?
+        {
+            string name;
+            float math, phy, chem, cs, eng;
+            float per, tot;
+            Console.Write("Enter Name of student: ");
+            name = Console.ReadLine();
+            Console.Write("Enter Physics Marks: ");
+            phy = float.Parse(Console.ReadLine());
+            Console.Write("Enter Chemisty Marks: ");
+            chem = float.Parse(Console.ReadLine());
+            Console.Write("Enter Computer Science Marks: ");
+            cs = float.Parse(Console.ReadLine());
+            Console.Write("Enter English Marks: ");
+            eng = float.Parse(Console.ReadLine());
+            Console.Write("Enter Maths Marks: ");
+            math = float.Parse(Console.ReadLine());
+
+            tot = (math + phy + chem + cs + eng);
+            per = tot / 5;
+
+            Console.WriteLine("Report Card of Student: " + name);
+            Console.WriteLine($"Maths Marks: {math}");
+            Console.WriteLine($"Physics Marks: {phy}");
+            Console.WriteLine($"Chemistry Marks: {chem}");
+            Console.WriteLine($"Computer Science Marks: {cs}");
+            Console.WriteLine($"English Marks: {eng}");
+            Console.WriteLine($"Total Marks: {tot}");
+            Console.WriteLine($"Percentage Obtained: {per} %");
+        }
+
+
+        public void accsModDemo() //P39. Write a program to display Student details and use protected, internal access modifiers for variables?
+        {
+            studtls stu = new studtls(23,1008,95.5f,"Rajput");
+            stu.showDtls();
         }
 
     }
